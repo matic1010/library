@@ -14,6 +14,10 @@ function Book(title, author, pages, read) {
   this.read = read;
 }
 
+Book.prototype.toggleReadStatus = function () {
+  this.read = !this.read;
+};
+
 function addBookToLibrary() {
   const title = prompt('What is the title of the book?');
   const author = prompt('Who wrote it?');
@@ -65,8 +69,8 @@ function makeBookCard(book) {
 }
 
 function toggleRead(title) {
-  const foundBook = myLibrary.find((book) => book.title);
-  foundBook.read = !foundBook.read;
+  const foundBook = myLibrary.find((book) => book.title === title);
+  foundBook.toggleReadStatus();
   updateBooks();
 }
 
