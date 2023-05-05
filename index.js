@@ -5,6 +5,7 @@ let myLibrary = [
 
 const addBookButton = document.getElementById('add-book-button');
 addBookButton.addEventListener('click', addBookToLibrary);
+const libraryContainer = document.querySelector('.library-container');
 
 function Book(title, author, pages, read) {
   this.title = title;
@@ -22,6 +23,7 @@ function addBookToLibrary() {
   const newBook = new Book(title, author, pages, read);
 
   myLibrary.push(newBook);
+  updateBooks();
 }
 
 function makeBookCard(book) {
@@ -32,6 +34,14 @@ function makeBookCard(book) {
   const bookAuthor = document.createElement('p');
   const bookPages = document.createElement('p');
   const bookRead = document.createElement('p');
+  const toggleReadButton = document.createElement('button');
+
+  toggleReadButton.addEventListener('click', (e) => {
+    const title = e.target.parentNode.firstChild.textContent;
+    toggleRead(title);
+  });
+
+  toggleReadButton.textContent = 'Toggle Read';
 
   bookTitle.classList.add('book-title');
   bookTitle.textContent = book.title;
@@ -49,15 +59,29 @@ function makeBookCard(book) {
   card.appendChild(bookAuthor);
   card.appendChild(bookPages);
   card.appendChild(bookRead);
+  card.appendChild(toggleReadButton);
 
   return card;
 }
 
-function renderBooks() {
-  const libraryContainer = document.querySelector('.library-container');
+function toggleRead(title) {
+  const foundBook = myLibrary.find((book) => book.title);
+  foundBook.read = !foundBook.read;
+  updateBooks();
+}
 
+function clearBooks() {
+  libraryContainer.innerHTML = '';
+}
+
+function renderBooks() {
   myLibrary.forEach((book) => {
     const card = makeBookCard(book);
     libraryContainer.appendChild(card);
   });
+}
+
+function updateBooks() {
+  clearBooks();
+  renderBooks();
 }
