@@ -31,7 +31,7 @@ function addBookToLibrary() {
 }
 
 function makeBookCard(book) {
-  const readText = book.read ? 'not read yet' : 'read';
+  const readText = book.read ? 'read' : 'not read yet';
 
   const card = document.createElement('div');
   const bookTitle = document.createElement('h2');
@@ -64,6 +64,8 @@ function makeBookCard(book) {
   card.appendChild(bookPages);
   card.appendChild(bookRead);
   card.appendChild(toggleReadButton);
+
+  card.classList.add('book-card');
 
   return card;
 }
