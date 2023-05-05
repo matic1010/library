@@ -1,4 +1,10 @@
-let myLibrary = [];
+let myLibrary = [
+  new Book('The Hobbit', 'J.R.R. Tolkien', 295, false),
+  new Book("Hitchhiker's Guide to the Galaxy", 'Douglas Adams', 254, true),
+];
+
+const addBookButton = document.getElementById('add-book-button');
+addBookButton.addEventListener('click', addBookToLibrary);
 
 function Book(title, author, pages, read) {
   this.title = title;
@@ -49,6 +55,7 @@ function makeBookCard(book) {
 
 function renderBooks() {
   const libraryContainer = document.querySelector('.library-container');
+
   myLibrary.forEach((book) => {
     const card = makeBookCard(book);
     libraryContainer.appendChild(card);
