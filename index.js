@@ -91,3 +91,7 @@ function updateBooks() {
   clearBooks();
   renderBooks();
 }
+
+window.onload = (e) => {
+  renderBooks();
+};
