@@ -1,4 +1,10 @@
-const myLibrary = [];
+const myLibrary = [
+  new Book("Test 1", "Timo Brudi", 333, false),
+  new Book("Test Book", "Nils Matic", 873, true),
+  new Book("My Favorite Book", "Iyo Takayama", 1234, true),
+  new Book("Test 2", "Timo Brudi", 123, false),
+  new Book("Test 3", "Timo Brudi", 90, false)
+];
 
 function Book(title, author, pages, read) {
   this.title = title;
@@ -30,4 +36,36 @@ function addBookToLibrary() {
   read = confirm("Have you read it?");
 
   myLibrary.push(new Book(title, author, pages, read));
+}
+
+function makeBookCard(book) {
+  const card = document.createElement("div");
+  card.classList.add('book-card');
+
+  const title = document.createElement("h3");
+  title.textContent = book.title;
+  card.appendChild(title);
+
+  const author = document.createElement("p");
+  author.textContent = book.author;
+  card.appendChild(author);
+
+  const pages = document.createElement("p");
+  pages.textContent = `${book.pages} pages`
+  card.appendChild(pages);
+
+  const readStatus = document.createElement("p");
+  readStatus.textContent = `${book.read ? 'read' : 'not yet read'}`
+  card.appendChild(readStatus);
+
+  return card;
+}
+
+function renderBooks() {
+  const booksDiv = document.getElementById("books");
+  booksDiv.innerHTML = "";
+  myLibrary.forEach(book => {
+    const bookCard = makeBookCard(book);
+    booksDiv.appendChild(bookCard)
+  })
 }
