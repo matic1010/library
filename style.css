@@ -4,11 +4,17 @@ body {
   align-items: center;
 }
 
+button {
+  padding: 8px 20px;
+  font-weight: 700;
+}
+
 #books {
   max-width: 800px;
   display: grid;
   gap: 8px;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  margin-block: 16px;
 }
 
 .book-card {
@@ -16,4 +22,16 @@ body {
   flex-direction: column;
   align-items: center;
   border: 1px solid black;
+  padding-block: 8px;
+}
+
+.new-book-form {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+#add-book-button {
+  margin-block: 16px;
 }

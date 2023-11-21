@@ -7,6 +7,25 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <h1>Welcome to Nils' Library</h1>
+  <h3>Here are your books:</h3>
+  <dialog id="new-book-modal">
+    <p>Add a new book</p>
+    <form class="new-book-form">
+      <label for="title">Title</label>
+      <input type="text" id="title" name="title">
+      <label for="author">Author</label>
+      <input type="text" id="author" name="author">
+      <label for="pages">Pages</label>
+      <input type="text" id="pages" name="pages">
+      <div>
+        <label for="read">read?</label>
+        <input type="checkbox" name="read" id="read">
+      </div>
+      <button id="add-book-button">Add Book</button>
+    </form>
+  </dialog>
+  <button id="new-book-button">New Book</button>
   <div id="books"></div>
   <script src="index.js"></script>
 </body>
