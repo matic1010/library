@@ -69,3 +69,5 @@ function renderBooks() {
     booksDiv.appendChild(bookCard)
   })
 }
+
+renderBooks();

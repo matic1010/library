@@ -1,0 +1,19 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#books {
+  max-width: 800px;
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.book-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid black;
+}
