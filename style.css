@@ -32,6 +32,10 @@ button {
   gap: 4px;
 }
 
+.toggle-read-button {
+  margin-top: 8px;
+}
+
 #add-book-button {
   margin-block: 16px;
 }

@@ -52,6 +52,10 @@ Book.prototype.info = function() {
   return `${this.title} by ${this.author}, ${this.pages} pages, ${!this.read ? 'not yet' : ""} read`;
 }
 
+Book.prototype.toggleRead = function() {
+  this.read = !this.read;
+}
+
 function addBookToLibrary({title, author, pages, read}) {
     myLibrary.push(new Book(title, author, pages, read));
 }
@@ -83,6 +87,15 @@ function makeBookCard(book) {
   });
   removeButton.innerHTML = "Remove Book"
   card.appendChild(removeButton);
+
+  const toggleReadButton = document.createElement("button");
+  toggleReadButton.innerHTML = "Toggle Read";
+  toggleReadButton.classList.add("toggle-read-button");
+  toggleReadButton.addEventListener("click", () => {
+    book.toggleRead();
+    renderBooks();
+  });
+  card.appendChild(toggleReadButton);
 
   return card;
 }
